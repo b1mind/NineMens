@@ -6,7 +6,7 @@ const dots = document.querySelectorAll('.dots')
 let turn = 0
 let playerOnePieces = 9
 let playerTwoPieces = 9
-
+let delPlayer
 const checkThree = (e, btn, player) => {
 	let x = btn.attributes.cx.value
 	let y = btn.attributes.cy.value
@@ -21,7 +21,8 @@ const checkThree = (e, btn, player) => {
 			yMatch++
 		}
 		if (xMatch >= 3 || yMatch >= 3) {
-			console.log('PIMP 3')
+			delPlayer = player
+			console.log(`${player} has 3'pimps `)
 			return
 		}
 	})
@@ -38,8 +39,11 @@ const playerOneAdd = (e, btn) => {
 
 const playerOneMove = (e, btn, ...args) => {
 	btn.classList.replace('playerOne', 'empty')
-	btn.classList
 	playerOnePieces++
+}
+
+const playerOneDel = (e, btn, ...args) => {
+	btn.classList.replace('playerOne', 'empty')
 }
 
 const playerTwoAdd = (e, btn, ...args) => {
@@ -53,6 +57,9 @@ const playerTwoMove = (e, btn, ...args) => {
 	btn.classList.replace('playerTwo', 'empty')
 	playerTwoPieces++
 }
+const playerTwoDel = (e, btn, ...args) => {
+	btn.classList.replace('playerTwo', 'empty')
+}
 
 gameBoard.addEventListener('click', e => {
 	let btn = e.target.closest('circle')
@@ -63,8 +70,10 @@ gameBoard.addEventListener('click', e => {
 			return
 		}
 	} else if (btn.classList.contains('playerOne')) {
+		!delPlayer === 'playerOne' ? playerOneDel(e, btn) : false
 		if (turn === 0) playerOneMove(e, btn)
 	} else {
+		!delPlayer === 'playerTwo' ? playerTwoDel(e, btn) : false
 		if (turn === 1) playerTwoMove(e, btn)
 	}
 
