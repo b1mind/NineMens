@@ -1,0 +1,36 @@
+.wrap {
+  width: 80%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dots {
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+circle:hover {
+  fill: black;
+  fill-opacity: 50%;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+.toggle {
+  fill: green;
+}
+
+.playerOne {
+  fill: blue;
+  fill-opacity: 100%;
+}
+
+.playerTwo {
+  fill: red;
+  fill-opacity: 100%;
+}
