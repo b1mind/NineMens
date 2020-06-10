@@ -1,12 +1,37 @@
 console.log('hi there')
 
 const gameBoard = document.getElementById('gameBoard')
+const dots = document.querySelectorAll('.dots')
+
 let turn = 0
 let playerOnePieces = 9
 let playerTwoPieces = 9
 
+const checkThree = (e, btn, player) => {
+	let x = btn.attributes.cx.value
+	let y = btn.attributes.cy.value
+	let playerDots = document.querySelectorAll(`.${player}`)
+	let xMatch = 0
+	let yMatch = 0
+	playerDots.forEach(dot => {
+		if (dot.cx.baseVal.value == x) {
+			xMatch++
+		}
+		if (dot.cy.baseVal.value == y) {
+			yMatch++
+		}
+		if (xMatch >= 3 || yMatch >= 3) {
+			console.log('PIMP 3')
+			return
+		}
+	})
+	console.log(xMatch, yMatch)
+	console.log(playerDots)
+}
+
 const playerOneAdd = (e, btn) => {
 	btn.classList.replace('empty', 'playerOne')
+	checkThree(e, btn, 'playerOne')
 	playerOnePieces--
 	turn = 1
 }
@@ -19,6 +44,7 @@ const playerOneMove = (e, btn, ...args) => {
 
 const playerTwoAdd = (e, btn, ...args) => {
 	btn.classList.replace('empty', 'playerTwo')
+	checkThree(e, btn, 'playerTwo')
 	playerTwoPieces--
 	turn = 0
 }
@@ -44,3 +70,7 @@ gameBoard.addEventListener('click', e => {
 
 	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces}`)
 })
+
+// check3s(e, btn, player) {e get all player dots, match x or y coords >= 3 } if 3's changeGameState(replace player, empty)
+
+// get all $player $dots that match $btn x or y cords
