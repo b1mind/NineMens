@@ -6,7 +6,8 @@ const dots = document.querySelectorAll('.dots')
 let turn = 0
 let playerOnePieces = 9
 let playerTwoPieces = 9
-let delPlayer
+let delPlayer = ''
+
 const checkThree = (e, btn, player) => {
 	let x = btn.attributes.cx.value
 	let y = btn.attributes.cy.value
@@ -35,6 +36,7 @@ const playerOneAdd = (e, btn) => {
 	checkThree(e, btn, 'playerOne')
 	playerOnePieces--
 	turn = 1
+	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${delPlayer}`)
 }
 
 const playerOneMove = (e, btn, ...args) => {
@@ -44,6 +46,7 @@ const playerOneMove = (e, btn, ...args) => {
 
 const playerOneDel = (e, btn, ...args) => {
 	btn.classList.replace('playerOne', 'empty')
+	delPlayer
 }
 
 const playerTwoAdd = (e, btn, ...args) => {
@@ -51,6 +54,7 @@ const playerTwoAdd = (e, btn, ...args) => {
 	checkThree(e, btn, 'playerTwo')
 	playerTwoPieces--
 	turn = 0
+	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${delPlayer}`)
 }
 
 const playerTwoMove = (e, btn, ...args) => {
@@ -59,25 +63,35 @@ const playerTwoMove = (e, btn, ...args) => {
 }
 const playerTwoDel = (e, btn, ...args) => {
 	btn.classList.replace('playerTwo', 'empty')
+	delPlayer = ''
 }
 
 gameBoard.addEventListener('click', e => {
 	let btn = e.target.closest('circle')
 	if (!btn) return
 	if (btn.classList.contains('empty')) {
-		if (+playerOnePieces || +playerTwoPieces) {
+		if (playerOnePieces > 0 || playerTwoPieces > 0) {
 			turn === 0 ? playerOneAdd(e, btn) : playerTwoAdd(e, btn)
 			return
 		}
 	} else if (btn.classList.contains('playerOne')) {
-		!delPlayer === 'playerOne' ? playerOneDel(e, btn) : false
-		if (turn === 0) playerOneMove(e, btn)
+		if (delPlayer === 'playerTwo') {
+			playerOneDel(e, btn)
+			return
+		} else if (turn === 0) {
+			playerOneMove(e, btn)
+			return
+		}
 	} else {
-		!delPlayer === 'playerTwo' ? playerTwoDel(e, btn) : false
-		if (turn === 1) playerTwoMove(e, btn)
+		if (delPlayer === 'playerOne') {
+			playerTwoDel(e, btn)
+			return
+		} else {
+			if (turn === 1) {
+				playerTwoMove(e, btn)
+			}
+		}
 	}
-
-	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces}`)
 })
 
 // check3s(e, btn, player) {e get all player dots, match x or y coords >= 3 } if 3's changeGameState(replace player, empty)
