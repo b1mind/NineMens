@@ -69,27 +69,20 @@ const playerTwoDel = (e, btn, ...args) => {
 gameBoard.addEventListener('click', e => {
 	let btn = e.target.closest('circle')
 	if (!btn) return
+
+	//check if empty
 	if (btn.classList.contains('empty')) {
 		if (playerOnePieces > 0 || playerTwoPieces > 0) {
 			turn === 0 ? playerOneAdd(e, btn) : playerTwoAdd(e, btn)
 			return
 		}
 	} else if (btn.classList.contains('playerOne')) {
-		if (delPlayer === 'playerTwo') {
-			playerOneDel(e, btn)
-			return
-		} else if (turn === 0) {
+		if (turn === 0) {
 			playerOneMove(e, btn)
-			return
 		}
 	} else {
-		if (delPlayer === 'playerOne') {
-			playerTwoDel(e, btn)
-			return
-		} else {
-			if (turn === 1) {
-				playerTwoMove(e, btn)
-			}
+		if (turn === 1) {
+			playerTwoMove(e, btn)
 		}
 	}
 })
