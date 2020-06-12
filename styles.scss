@@ -36,12 +36,21 @@ img {
 	justify-content: center;
 }
 
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+.console {
+	text-align: center;
+}
+
 .dots {
 	fill: white;
 	//-fill-opacity: 50%;
 	stroke: black;
 	stroke-width: 1px;
 }
+
 circle:hover {
 	fill: black;
 	fill-opacity: 50%;
@@ -57,6 +66,7 @@ circle:hover {
 	fill: blue;
 	fill-opacity: 100%;
 }
+
 .playerTwo {
 	fill: red;
 	fill-opacity: 100%;

@@ -13,6 +13,14 @@ html(lang="en")
 
   body
     .wrap
+      .console.flex
+        .playerOnePieces
+          h3 Player One
+          h2 9
+        .playerTwoPieces
+          h3 Player Two
+          h2 9
+        
       svg#gameBoard(width='450', height='450', viewBox='-15 -15 450 450', fill='none', xmlns='http://www.w3.org/2000/svg')
         g.lines(stroke='#FDD400', stroke-width='4')
           rect(x='12', y='12', width='396', height='396')

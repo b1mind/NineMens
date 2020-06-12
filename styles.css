@@ -35,6 +35,19 @@ img {
           justify-content: center;
 }
 
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.console {
+  text-align: center;
+}
+
 .dots {
   fill: white;
   stroke: black;
