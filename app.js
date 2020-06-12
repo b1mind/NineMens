@@ -2,11 +2,12 @@ console.log('hi there')
 
 const gameBoard = document.getElementById('gameBoard')
 const dots = document.querySelectorAll('.dots')
-
+let playerOne = 'playerOne'
+let playerTwo = 'playerTwo'
 let turn = 0
 let playerOnePieces = 9
 let playerTwoPieces = 9
-let delPlayer = ''
+let threeMan = null
 
 const checkThree = (e, btn, player) => {
 	let x = btn.attributes.cx.value
@@ -21,12 +22,11 @@ const checkThree = (e, btn, player) => {
 		if (dot.cy.baseVal.value == y) {
 			yMatch++
 		}
-		if (xMatch >= 3 || yMatch >= 3) {
-			delPlayer = player
-			console.log(`${player} has 3'pimps `)
-			return
-		}
 	})
+	if (xMatch >= 3 || yMatch >= 3) {
+		threeMan = player
+		console.log(`${player} has 3'pimps `)
+	}
 	console.log(xMatch, yMatch)
 	console.log(playerDots)
 }
@@ -36,7 +36,7 @@ const playerOneAdd = (e, btn) => {
 	checkThree(e, btn, 'playerOne')
 	playerOnePieces--
 	turn = 1
-	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${delPlayer}`)
+	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
 
 const playerOneMove = (e, btn, ...args) => {
@@ -46,7 +46,7 @@ const playerOneMove = (e, btn, ...args) => {
 
 const playerOneDel = (e, btn, ...args) => {
 	btn.classList.replace('playerOne', 'empty')
-	delPlayer
+	threeMan = false
 }
 
 const playerTwoAdd = (e, btn, ...args) => {
@@ -54,7 +54,7 @@ const playerTwoAdd = (e, btn, ...args) => {
 	checkThree(e, btn, 'playerTwo')
 	playerTwoPieces--
 	turn = 0
-	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${delPlayer}`)
+	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
 
 const playerTwoMove = (e, btn, ...args) => {
@@ -63,26 +63,31 @@ const playerTwoMove = (e, btn, ...args) => {
 }
 const playerTwoDel = (e, btn, ...args) => {
 	btn.classList.replace('playerTwo', 'empty')
-	delPlayer = ''
+	threeMan = false
 }
 
 gameBoard.addEventListener('click', e => {
 	let btn = e.target.closest('circle')
 	if (!btn) return
-
-	//check if empty
+	//Empty
 	if (btn.classList.contains('empty')) {
 		if (playerOnePieces > 0 || playerTwoPieces > 0) {
 			turn === 0 ? playerOneAdd(e, btn) : playerTwoAdd(e, btn)
 			return
 		}
+		//Player One
 	} else if (btn.classList.contains('playerOne')) {
-		if (turn === 0) {
+		if (!threeMan && playerOnePieces <= 0 && turn === 0) {
 			playerOneMove(e, btn)
+		} else if (threeMan === playerTwo) {
+			playerOneDel(e, btn, playerOne)
 		}
+		//Player Two
 	} else {
-		if (turn === 1) {
+		if (turn === 1 && playerTwoPieces <= 0 && !threeMan) {
 			playerTwoMove(e, btn)
+		} else if (threeMan === playerOne) {
+			playerTwoDel(e, btn, playerTwo)
 		}
 	}
 })
