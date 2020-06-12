@@ -1,2 +1,4 @@
-Fix:
-  ☐ click self and drag will not remove self and cheat turns.
+Todo:
+  ☐ Player moves limit after allOnBoard = true
+  ☐ Player captured count
+  ☐ Fly rule after <= 3 captured
