@@ -33,23 +33,26 @@ const checkThree = (e, btn, player) => {
 	let playerDots = document.querySelectorAll(`.${player}`)
 	let xMatch = 0
 	let yMatch = 0
-	let safeThree = []
-
+	let mill = []
 	playerDots.forEach(dot => {
 		if (dot.cx.baseVal.value == x) {
 			xMatch++
-			safeThree.push(dot)
+			mill.push(dot)
 		}
 		if (dot.cy.baseVal.value == y) {
 			yMatch++
-			safeThree.push(dot)
+			mill.push(dot)
 		}
 	})
 
 	if (xMatch >= 3 || yMatch >= 3) {
 		threeMan = player
 		//todo safe from capture in 3
-		console.log(safeThree)
+		console.log(mill)
+		mill.forEach(dot => {
+			dot.classList.add('mill')
+			console.log()
+		})
 		console.log(`${player} has 3'pimps `)
 	}
 
@@ -62,7 +65,7 @@ const playerOneAdd = (e, btn, player, ...args) => {
 	checkThree(e, btn, player)
 	playerOnePieces--
 	playerOneConsole.children[1].innerHTML = playerOnePieces
-	playerOneConsole.parentElement.style.setProperty('background-color', 'red')
+	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	turn = playerTwo
 	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
@@ -76,6 +79,11 @@ const playerOneMove = (e, btn, ...args) => {
 
 const playerOneDel = (e, btn, ...args) => {
 	btn.classList.replace(playerOne, 'empty')
+	let mills = document.querySelectorAll('.mill')
+	mills.forEach(dot => {
+		console.log(dot)
+		dot.classList.remove('mill')
+	})
 	threeMan = false
 }
 
@@ -84,7 +92,8 @@ const playerTwoAdd = (e, btn, player, ...args) => {
 	checkThree(e, btn, player)
 	playerTwoPieces--
 	playerTwoConsole.children[1].innerHTML = playerTwoPieces
-	playerTwoConsole.parentElement.style.setProperty('background-color', 'blue')
+	console.dir(btn)
+	playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	turn = playerOne
 	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
@@ -95,8 +104,14 @@ const playerTwoMove = (e, btn, ...args) => {
 	lastY = btn.attributes.cy.value
 	playerTwoPieces++
 }
+
 const playerTwoDel = (e, btn, ...args) => {
 	btn.classList.replace(playerTwo, 'empty')
+	let mills = document.querySelectorAll('.mill')
+	mills.forEach(dot => {
+		console.log(dot)
+		dot.classList.remove('mill')
+	})
 	threeMan = false
 }
 
@@ -125,6 +140,7 @@ gameBoard.addEventListener('click', e => {
 		}
 	}
 })
-// queryAll empty then forEach.empty that matches lastX or lastY if length.2 < use less.
 
-//todo in check three put logic for if x or y < 40 points can move if no false move... unless only 3 left on board
+//todo check three logic
+// for if x or y < 40 points can move if no false move... unless only 3 left on board
+// queryAll empty then forEach.empty that matches lastX or lastY if length.2 < use less.

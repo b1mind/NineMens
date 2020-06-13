@@ -1,5 +1,14 @@
-Todo:
+// See in-file comments for ideas 💡
+// Creating better "mill" logic with help with refactoring.
+
+Logic Todo:
+  ☐ Roll to start 
   ☐ Player moves limit after allOnBoard = true
   ☐ Player captured count
   ☐ Fly rule after <= 3 captured
-  ☐ prevent three from del unless only left
+  ☐ prevent mill from del unless only left
+
+UI/UX:
+  ✔ class highlight for mill @done(20-06-13 03:00)
+  ✔ players board with count and turn color @done(20-06-13 03:01)
+  ☐ captured players

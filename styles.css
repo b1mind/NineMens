@@ -15,6 +15,7 @@ body {
   height: 100%;
   min-height: 100%;
   margin: 0;
+  background-color: #3c5385;
 }
 
 a {
@@ -63,6 +64,11 @@ img {
   }
 }
 
+.lines {
+  stroke: #212841;
+  stroke-width: 4;
+}
+
 .dots {
   fill: white;
   stroke: black;
@@ -71,20 +77,21 @@ img {
 
 circle:hover {
   fill-opacity: 50%;
-  stroke: black;
+  stroke: white;
   stroke-width: 2px;
 }
 
-.toggle {
-  fill: green;
-}
-
 .playerOne {
-  fill: blue;
+  fill: #ca595f;
   fill-opacity: 100%;
 }
 
 .playerTwo {
-  fill: red;
+  fill: #5fa15f;
   fill-opacity: 100%;
+}
+
+.mill {
+  stroke: gold;
+  stroke-width: 2px;
 }
