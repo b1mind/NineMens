@@ -11,4 +11,8 @@ Logic Todo:
 UI/UX:
   ✔ class highlight for mill @done(20-06-13 03:00)
   ✔ players board with count and turn color @done(20-06-13 03:01)
-  ☐ captured players
+  ☐ color players and wrappers
+  ☐ captured players value
+  ☐ tye in css vars
+  ☐ make animation todo list*wishlist
+  ☐ add icons ?
