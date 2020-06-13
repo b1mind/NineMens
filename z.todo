@@ -2,3 +2,4 @@ Todo:
   ☐ Player moves limit after allOnBoard = true
   ☐ Player captured count
   ☐ Fly rule after <= 3 captured
+  ☐ prevent three from del unless only left
