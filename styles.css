@@ -45,7 +45,22 @@ img {
 }
 
 .console {
+  padding: 1.5rem;
+  color: white;
   text-align: center;
+  background-color: grey;
+}
+
+#gameBoard {
+  width: 560px;
+  height: 560px;
+}
+
+@media (max-width: 420px) {
+  #gameBoard {
+    width: 360px;
+    height: 360px;
+  }
 }
 
 .dots {
@@ -55,7 +70,6 @@ img {
 }
 
 circle:hover {
-  fill: black;
   fill-opacity: 50%;
   stroke: black;
   stroke-width: 2px;
