@@ -26,6 +26,11 @@ img {
   max-width: 100%;
 }
 
+h2,
+h3 {
+  margin: 0.5rem 0;
+}
+
 .wrap {
   width: 80%;
   margin: 0 auto;
@@ -40,9 +45,8 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .console {

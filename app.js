@@ -16,7 +16,7 @@ let allOnBoard = false
 let error = false
 
 //todo no fly zone unless last 3
-const safeMove = (e, btn, player) => {
+const safeMove = (e, btn, player, ...args) => {
 	let emptyDots = document.querySelectorAll(`.empty`)
 	if (allOnBoard) {
 		emptyDots.forEach(dot => {
@@ -27,7 +27,7 @@ const safeMove = (e, btn, player) => {
 	}
 }
 
-const checkThree = (e, btn, player) => {
+const checkThree = (e, btn, player, ...args) => {
 	let x = btn.attributes.cx.value
 	let y = btn.attributes.cy.value
 	let playerDots = document.querySelectorAll(`.${player}`)
@@ -47,27 +47,23 @@ const checkThree = (e, btn, player) => {
 
 	if (xMatch >= 3 || yMatch >= 3) {
 		threeMan = player
+		player === playerOne
+			? playerTwoConsole.style.setProperty('background-color', 'red')
+			: playerOneConsole.style.setProperty('background-color', 'red')
 		//todo safe from capture in 3
-		console.log(mill)
 		mill.forEach(dot => {
 			dot.classList.add('mill')
-			console.log()
 		})
-		console.log(`${player} has 3'pimps `)
 	}
-
-	console.log(xMatch, yMatch)
-	console.log(playerDots)
 }
 
 const playerOneAdd = (e, btn, player, ...args) => {
 	btn.classList.replace('empty', player)
 	checkThree(e, btn, player)
 	playerOnePieces--
-	playerOneConsole.children[1].innerHTML = playerOnePieces
+	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	turn = playerTwo
-	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
 
 const playerOneMove = (e, btn, ...args) => {
@@ -79,6 +75,7 @@ const playerOneMove = (e, btn, ...args) => {
 
 const playerOneDel = (e, btn, ...args) => {
 	btn.classList.replace(playerOne, 'empty')
+	playerOneConsole.style.removeProperty('background-color')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
 		console.log(dot)
@@ -91,11 +88,10 @@ const playerTwoAdd = (e, btn, player, ...args) => {
 	btn.classList.replace('empty', player)
 	checkThree(e, btn, player)
 	playerTwoPieces--
-	playerTwoConsole.children[1].innerHTML = playerTwoPieces
+	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
 	console.dir(btn)
 	playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	turn = playerOne
-	console.log(`Its Turn:${turn}, playerOne: ${playerOnePieces}, playerTwo: ${playerTwoPieces} Del ${threeMan}`)
 }
 
 const playerTwoMove = (e, btn, ...args) => {
@@ -107,6 +103,7 @@ const playerTwoMove = (e, btn, ...args) => {
 
 const playerTwoDel = (e, btn, ...args) => {
 	btn.classList.replace(playerTwo, 'empty')
+	playerTwoConsole.style.removeProperty('background-color')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
 		console.log(dot)

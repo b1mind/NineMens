@@ -16,10 +16,14 @@ html(lang="en")
       .console.flex
         .playerOnePieces
           h3 Player One
-          h2 9
+          .flex
+            h2 9
+            h2 0
         .playerTwoPieces
           h3 Player Two
-          h2 9
+          .flex
+            h2 9
+            h2 0
         
       svg#gameBoard(viewBox='-15 -15 450 450', fill='none', xmlns='http://www.w3.org/2000/svg')
         g.lines()
@@ -31,27 +35,27 @@ html(lang="en")
           line(x1='143', y1='212', x2='10', y2='212')
           line(x1='410', y1='212', x2='277', y2='212')
         g.dots()
-          circle.empty(cx='10', cy='10', r='10')
-          circle.empty(cx='10', cy='210', r='10')
-          circle.empty(cx='10', cy='404', r='10')
-          circle.empty(cx='77', cy='77', r='10')
-          circle.empty(cx='77', cy='210', r='10')
-          circle.empty(cx='77', cy='343', r='10')
-          circle.empty(cx='145', cy='145', r='10')
-          circle.empty(cx='145', cy='210', r='10')
-          circle.empty(cx='145', cy='274', r='10')
-          circle.empty(cx='212', cy='10', r='10')
-          circle.empty(cx='212', cy='77', r='10')
-          circle.empty(cx='212', cy='145', r='10')
-          circle.empty(cx='213', cy='274', r='10')
-          circle.empty(cx='213', cy='343', r='10')
-          circle.empty(cx='213', cy='404', r='10')
-          circle.empty(cx='276', cy='145', r='10')
-          circle.empty(cx='276', cy='211', r='10')
-          circle.empty(cx='276', cy='274', r='10')
-          circle.empty(cx='343', cy='77', r='10')
-          circle.empty(cx='343', cy='211', r='10')
-          circle.empty(cx='343', cy='343', r='10')
-          circle.empty(cx='410', cy='10', r='10',)
-          circle.empty(cx='410', cy='211', r='10')
-          circle.empty(cx='410', cy='404', r='10')
+          circle.empty(cx='10', cy='10', r='15')
+          circle.empty(cx='10', cy='210', r='15')
+          circle.empty(cx='10', cy='404', r='15')
+          circle.empty(cx='77', cy='77', r='15')
+          circle.empty(cx='77', cy='210', r='15')
+          circle.empty(cx='77', cy='343', r='15')
+          circle.empty(cx='145', cy='145', r='15')
+          circle.empty(cx='145', cy='210', r='15')
+          circle.empty(cx='145', cy='274', r='15')
+          circle.empty(cx='212', cy='10', r='15')
+          circle.empty(cx='212', cy='77', r='15')
+          circle.empty(cx='212', cy='145', r='15')
+          circle.empty(cx='213', cy='274', r='15')
+          circle.empty(cx='213', cy='343', r='15')
+          circle.empty(cx='213', cy='404', r='15')
+          circle.empty(cx='276', cy='145', r='15')
+          circle.empty(cx='276', cy='211', r='15')
+          circle.empty(cx='276', cy='274', r='15')
+          circle.empty(cx='343', cy='77', r='15')
+          circle.empty(cx='343', cy='211', r='15')
+          circle.empty(cx='343', cy='343', r='15')
+          circle.empty(cx='410', cy='10', r='15',)
+          circle.empty(cx='410', cy='211', r='15')
+          circle.empty(cx='410', cy='404', r='15')
