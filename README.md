@@ -1,10 +1,14 @@
-# 9 Men's Morris
+# 1Mind: 9 Men's Morris
 
 This is a logic board game that I have recently fallen in love with. I hope you enjoy
 
-**BETA001** 💡 This game is fully playable, if you follow the rules. ⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements.
+**BETA001** 💡 This game is fully playable, if you follow the rules. I am looking at making a undue move button to help if you do make a wrong move.
+
+⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements.
 
 ### Rules for the game
+
+[4:20s video of rules](https://www.youtube.com/watch?v=zvbIKOHIkRE)
 
 - There are 2 players in the game.
 - The board consists of a grid of 3 squares one inside the other, with lines connecting the 24 intersections on which pieces can be placed.
@@ -30,16 +34,17 @@ This is a logic board game that I have recently fallen in love with. I hope you 
 
 ## On the Todo List
 
-// See in-file comments for ideas 💡
-// Creating better "mill" logic with help with refactoring.
-
 Logic Todo:
 ☐ Roll to start
 ☐ Player captured count
 ☐ Winning logic / error logic
+☐ Undue last move
 ☐ Restart button
+☐ Modal popup with directions
+
 Player moves:
 // logic for after all peices are used playerMove()
+// needs a full refactor really look at composition over inhearitance.
 ✔ only horizontal moves working @done(20-06-13 23:11)
 ☐ Cant move to same spot
 ☐ Only move one space
@@ -47,11 +52,12 @@ Player moves:
 ☐ prevent mill from del unless only left
 
 UI/UX:
-✔ class highlight for mill @done(20-06-13 03:00)
-✔ players board with count and turn color @done(20-06-13 03:01)
+✔ class highlight for mill @done(20-06-12 03:00)
+✔ players board with count and turn color @done(20-06-12 03:01)
 ☐ color players and wrappers
 ☐ captured players value
 ☐ winnning text/effects
+☐ Undue last move button
 ☐ tye in css vars
 ☐ make animation todo list\*wishlist
 ☐ add icons ?
