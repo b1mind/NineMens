@@ -13,13 +13,17 @@ I am looking at making a undue move button to help if you do make a wrong move.
 ⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Might look at moving project over to [Svelte "framework"](https://svelte.dev/)
 
 ```
+// working
 ✅ Player turns Phase 1 and 2
-✅ Single Mills and Capturing Players
+✅ Single Mills (highlighting working for double)
+✅ Capturing Players
 ✅ Only moves on path allowed in Phase 2
+// working on
+❌ Mills are not safe and can be deleted (illegal move)
+❌ Double Mills will highlight but only one capture allowed atm.
 ❌ Can move more than one space (illegal move, unless Phase 3)
 ❌ Can move back to same spot (illegal move)
 ❌ Phase 3 (optional) Can't Fly yet (limited to only path moves)
-❌ Double Mills will highlight but only one capture allowed atm.
 ```
 
 ## Rules for the game
@@ -52,38 +56,45 @@ I am looking at making a undue move button to help if you do make a wrong move.
 
 ```
 
-// See in-file comments for todo locations and ideas 💡
-// Creating better "mill" logic with help with refactoring.
-✔ updated @done(20-06-14 01:31)
-
 Logic Todo:
-  ☐ Roll to start
-  ☐ Player captured count
+  ✔ Roll to start @done(20-06-14 02:32)
+  ✔ Player captured count @done(20-06-14 02:53)
   ☐ Winning logic / error logic
   ☐ Undue last move
   ☐ Restart button
   ☐ Modal popup with directions/rules
 
   Player moves:
-    // logic for after all peices are used playerMove()
-    // needs a full refactor really look at composition over inhearitance.
     ✔ only horizontal moves working @done(20-06-13 23:11)
+    ☐ force capture when Mill is made
+    ☐ Fly rule after <= 3 captured (free to move any where)
     ☐ Cant move to same spot
     ☐ Only move one space
-    ☐ Fly rule after <= 3 captured (free to move any where)
-    ☐ prevent mill from del unless only left
-
+    ☐ prevent mill from del unless only 3 left
+  Console Logic:
+    ☐ one function to update - start todo list
+    ☐ text log - errors/messages
 
 UI/UX:
   ✔ class highlight for mill @done(20-06-12 03:00)
   ✔ players board with count and turn color @done(20-06-12 03:01)
+  ✔ captured players value @done(20-06-14 02:53)
   ☐ color players and wrappers
-  ☐ captured players value
   ☐ winnning text/effects
   ☐ Undue last move button
   ☐ tye in css vars
+  ☐ start modal - roll/readup/color selector
+  ☐ fix alignment of svg elements
   ☐ make animation todo list*wishlist
   ☐ add icons ?
+
+Notes:
+  // See in-file comments for todo locations and ideas 💡
+  // Creating better "mill" logic with help with refactoring.
+  // logic for after all peices are used playerMove()
+  // refacotor console logic ASAP starting to repeate to much
+  // full refactor really look at composition over inhearitance.
+  ✔ updated @done(20-06-14 04:19)
 
 ```
 
