@@ -1,5 +1,6 @@
 // See in-file comments for todo locations and ideas 💡
 // Creating better "mill" logic with help with refactoring.
+✔ updated @done(20-06-14 01:31)
 
 Logic Todo:
   ☐ Roll to start 
@@ -7,7 +8,7 @@ Logic Todo:
   ☐ Winning logic / error logic
   ☐ Undue last move
   ☐ Restart button
-  ☐ Modal popup with directions
+  ☐ Modal popup with directions/rules
 
   Player moves:
     // logic for after all peices are used playerMove()
