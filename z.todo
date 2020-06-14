@@ -3,16 +3,26 @@
 
 Logic Todo:
   ☐ Roll to start 
-  ☐ Player moves limit after allOnBoard = true
   ☐ Player captured count
-  ☐ Fly rule after <= 3 captured
-  ☐ prevent mill from del unless only left
+  ☐ Winning logic / error logic
+  ☐ Restart button
+  ☐ Modal popup with directions
+  
+  Player moves:
+    // logic for after all peices are used playerMove()
+    ✔ only horizontal moves working @done(20-06-13 23:11)
+    ☐ Cant move to same spot
+    ☐ Only move one space
+    ☐ Fly rule after <= 3 captured (free to move any where)
+    ☐ prevent mill from del unless only left
+  
 
 UI/UX:
   ✔ class highlight for mill @done(20-06-13 03:00)
   ✔ players board with count and turn color @done(20-06-13 03:01)
   ☐ color players and wrappers
   ☐ captured players value
+  ☐ winnning text/effects
   ☐ tye in css vars
   ☐ make animation todo list*wishlist
   ☐ add icons ?
