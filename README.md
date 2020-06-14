@@ -1,5 +1,7 @@
 # 1Mind: 9 Men's Morris
 
+[Play the Game](https://b1m1nd.github.io/NineMens/)
+
 This is a logic board game that I have recently fallen in love with. I hope you enjoy
 
 **BETA001** 💡 This game is fully playable, if you follow the rules. I am looking at making a undue move button to help if you do make a wrong move.
