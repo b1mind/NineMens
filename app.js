@@ -17,14 +17,20 @@ let error = false
 
 //todo no fly zone unless last 3
 const safeMove = (e, btn, player, ...args) => {
-	let emptyDots = document.querySelectorAll(`.empty`)
+	let safe
+	if (!allOnBoard) {
+		return (safe = true)
+	}
+	safe = lastX === btn.attributes.cx.value || lastY === btn.attributes.cy.value ? true : false
+	return safe
+	/* 	let emptyDots = document.querySelectorAll(`.empty`)
 	if (allOnBoard) {
 		emptyDots.forEach(dot => {
 			if ((dot.cx.baseVal.value = lastX)) {
 			} else if ((dot.cy.baseVal.value = lastY)) {
 			}
 		})
-	}
+	} */
 }
 
 const checkThree = (e, btn, player, ...args) => {
@@ -58,6 +64,9 @@ const checkThree = (e, btn, player, ...args) => {
 }
 
 const playerOneAdd = (e, btn, player, ...args) => {
+	if (safeMove(e, btn, player) === false) {
+		return
+	}
 	btn.classList.replace('empty', player)
 	checkThree(e, btn, player)
 	playerOnePieces--
@@ -85,6 +94,9 @@ const playerOneDel = (e, btn, ...args) => {
 }
 
 const playerTwoAdd = (e, btn, player, ...args) => {
+	if (safeMove(e, btn, player) === false) {
+		return
+	}
 	btn.classList.replace('empty', player)
 	checkThree(e, btn, player)
 	playerTwoPieces--
@@ -124,6 +136,7 @@ gameBoard.addEventListener('click', e => {
 		//<Player One
 	} else if (btn.classList.contains(playerOne)) {
 		if (turn === playerOne && playerOnePieces <= 0 && !threeMan) {
+			allOnBoard = true
 			playerOneMove(e, btn)
 		} else if (threeMan === playerTwo) {
 			playerOneDel(e, btn)
@@ -131,6 +144,7 @@ gameBoard.addEventListener('click', e => {
 		//<Player Two
 	} else {
 		if (turn === playerTwo && playerTwoPieces <= 0 && !threeMan) {
+			allOnBoard = true
 			playerTwoMove(e, btn)
 		} else if (threeMan === playerOne) {
 			playerTwoDel(e, btn)
