@@ -2,9 +2,9 @@ Logic Todo:
   ✔ Roll to start @done(20-06-14 02:32)
   ✔ Player captured count @done(20-06-14 02:53)
   ✔ Winning logic @done(20-06-14 18:05) `make UI changes`
+  ✔ Undo last move @done(20-06-15 00:21)
+  ✔ Restart button @done(20-06-14 02:21)
   ☐ Error handling logic
-  ☐ Undo last move
-  ☐ Restart button
   ☐ Modal popup with directions/rules
 
   Player moves:
@@ -12,27 +12,30 @@ Logic Todo:
     ✔ force capture when Mill is made (player turn issue) @done(20-06-14 16:16)
     ✔ prevent mill from capture @done(20-06-14 19:45)
     ✔ Fly rule after <= 3 captured (free to move any where) @done(20-06-14 21:56)
-    ✔ Capture allowed in if Mill is last 3 pieces @done(20-06-14 21:57)
-    ☐ allow capture from mill if only pieces to capture
-    ☐ Cant move to same spot
+    ✔ Capture allowed when Mill is last or fist 3 pieces @done(20-06-14 21:57)
+    ✔ Cant move to same spot @done(20-06-15 05:04)
+    ☐ allow capture more than one mill are only pieces to capture
     ☐ Only move one space
   Console Logic:
     ☐ one function to update - start todo list
     ☐ text log - errors/messages
     ☐ implement CSS vars 
+    ☐ make log in modal popup overlay?
 
 UI/UX:
   ✔ class highlight for mill @done(20-06-12 03:00)
   ✔ players board with count and turn color @done(20-06-12 03:01)
   ✔ captured players value @done(20-06-14 02:53)
-  ☐ color players and wrappers
-  ☐ winnning text/effects
-  ☐ Undo last move button
+  ✔ color players and wrappers @done(20-06-15 05:03)
+  ☐ winnning text/effects `do better slacker`
+  ✔ Undo last move button @done(20-06-15 02:28)
+  ☐ better control buttons undo/restart
   ✔ tye in css vars 1/2 @done(20-06-14 21:58) `add to console logic`
   ☐ start modal - roll/readup/color selector
   ☐ fix alignment of svg elements
   ☐ make animation todo list*wishlist
-  ☐ add icons ?
+  ✔ add icons ? @done(20-06-15 04:25)
+  ☐ Differnt fonts
 
 Notes:
   // See in-file comments for todo locations and ideas 💡
@@ -40,4 +43,4 @@ Notes:
   // logic for after all peices are used playerMove()
   // refacotor console logic ASAP starting to repeate to much
   // full refactor really look at composition over inhearitance.
-  ✔ updated @done(20-06-14 21:57)
+  ✔ updated @done(20-06-15 05:03)

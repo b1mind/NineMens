@@ -6,13 +6,23 @@
 
 **This is a logic board game that I have recently fallen in love with. I hope you enjoy**
 
-💡
-**This game is fully playable, if you follow the rules.**
-Looking at making an undo button, for case situations.
+💡-
+**This game is fully playable, if you follow the rules.** You can use "put back" button during Phase 2.
 
-⚠ **If only Mills left and player count is > 3 cant capture pieces. Locks up moves, forced to restart ⚠ Working on fix** 😵
+### How-to Play:
 
-⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Before requesting a feature or submitting feedback please check <a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>.
+**Goal: Form 3 "men" in a row to capture opponents pieces**
+
+- Start: Roll to see who goes first! Default: Player One
+- Phase 1: Take turns placing men till your have 0
+- Phase 2: Move men one space following path. Use "Put Back" button to return piece to board if needed.
+- Phase 3: When any player is down to last 3 men "Flying" is enabled and players can move freely on the board.
+
+[4:20s video of rules](https://www.youtube.com/watch?v=zvbIKOHIkRE)
+
+⚠- **Bug** ⚠ Rare case but if only Mills are left and player count !=3 cant capture pieces. Must to restart. Working on fix 😵
+
+⛑- Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Before requesting a feature or submitting feedback please check <a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>.
 
 As I start to refactor the project I might look at moving it over to <a href="https://svelte.dev/" target="_blank">Svelte "framework"</a> over vanilla js.
 
@@ -20,22 +30,20 @@ As I start to refactor the project I might look at moving it over to <a href="ht
 // working
 ✅ Player turns Phase 1 and 2
 ✅ Single Mills (highlighting working for double)
-✅ Capturing Players
-✅ Forced Capture (must capture to advance)
+✅ Capturing Players (must capture to advance if mill)
 ✅ Phase 2 only moves on path allowed
+✅ Phase 2 undo "Put Back" button enabled **not optional**
 ✅ Mills are safe from capture
-✅ Phase 3 (optional) "Fly moves allowed"
+✅ Phase 3 "Fly" moves allowed for both players **not optional**
 // working on
-❌ Can't capture Mills if player count is > 3 *Locks moves forced restart
+❌ Allow capture: more than 1 mill are only pieces to capture **While rare** locks moves forced restart
 ❌ Can move more than one space (illegal move, unless Phase 3)
-❌ Can move back to same spot (illegal move)
 // optionals
 ❌ Double Mills will highlight but only one capture allowed
+❌ Can't turn Phase 3 off (on by default)
 ```
 
 ## Rules for the game
-
-[4:20s video of rules](https://www.youtube.com/watch?v=zvbIKOHIkRE)
 
 - There are 2 players in the game.
 - The board consists of a grid of 3 squares one inside the other, with lines connecting the 24 intersections on which pieces can be placed.
@@ -69,3 +77,14 @@ As I start to refactor the project I might look at moving it over to <a href="ht
 - multiplayer of some sort...
 - Chatroom with ready commands or just chat if multiplayer
 - Chat lobby and game rooms(one chat different views)?
+
+### version changes
+
+- 0.3b Almost fully functioning
+  - UI/UX changes from colors to mobile hover, and icons.
+  - Player can not move back to the same spot, if piece is picked up and has no move must use "Put Back"
+  - Phase 3: Flying Now works for both players. GG HF
+- 0.2b Did stuffs
+  - Restricted moves to only paths
+  - Mills are now safe from capture unless opponent on board count = 3
+  -
