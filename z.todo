@@ -3,7 +3,7 @@ Logic Todo:
   ✔ Player captured count @done(20-06-14 02:53)
   ✔ Winning logic @done(20-06-14 18:05) `make UI changes`
   ☐ Error handling logic
-  ☐ Undue last move
+  ☐ Undo last move
   ☐ Restart button
   ☐ Modal popup with directions/rules
 
@@ -27,7 +27,7 @@ UI/UX:
   ✔ captured players value @done(20-06-14 02:53)
   ☐ color players and wrappers
   ☐ winnning text/effects
-  ☐ Undue last move button
+  ☐ Undo last move button
   ✔ tye in css vars 1/2 @done(20-06-14 21:58) `add to console logic`
   ☐ start modal - roll/readup/color selector
   ☐ fix alignment of svg elements

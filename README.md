@@ -8,7 +8,7 @@
 
 💡
 **This game is fully playable, if you follow the rules.**
-I am looking at making a undue move button to help if you do make a wrong move.
+Looking at making an undo button, for case situations.
 
 ⚠ **If only Mills left and player count is > 3 cant capture pieces. Locks up moves, forced to restart ⚠ Working on fix** 😵
 
