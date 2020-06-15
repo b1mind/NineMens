@@ -10,6 +10,8 @@
 **This game is fully playable, if you follow the rules.**
 I am looking at making a undue move button to help if you do make a wrong move.
 
+⚠ **If only Mill is left to capture moves will be locked \*Working on urgent fix** ⚠
+
 ⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Before requesting a feature or submitting feedback please check <a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>.
 
 As I start to refactor the project I might look at moving it over to <a href="https://svelte.dev/" target="_blank">Svelte "framework"</a> over vanilla js.
@@ -24,10 +26,11 @@ As I start to refactor the project I might look at moving it over to <a href="ht
 ✅ Mills are safe from capture
 // working on
 ❌ If only Mill is available to capture no moves can be made 👎 (top fix list)
-❌ Double Mills will highlight but only one capture allowed
 ❌ Can move more than one space (illegal move, unless Phase 3)
 ❌ Can move back to same spot (illegal move)
+// optionals
 ❌ Phase 3 (optional) Can't Fly yet (limited to only path moves)
+❌ Double Mills will highlight but only one capture allowed
 ```
 
 ## Rules for the game
