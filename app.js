@@ -153,7 +153,10 @@ const playerOneDel = (e, btn, ...args) => {
 	playerTwoCaptured++
 	playerTwoConsole.children[1].children[1].innerHTML = playerTwoCaptured
 	turn = playerOne
-	playerTwoCaptured >= 7 ? (playerTwoConsole.children[1].children[1].innerHTML = winIcon) : false
+	playerTwoCaptured >= 7
+		? ((playerTwoConsole.children[1].children[1].innerHTML = winIcon),
+		  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)'))
+		: false
 }
 
 //@ playerTwo actions
@@ -196,7 +199,10 @@ const playerTwoDel = (e, btn, ...args) => {
 	playerOneCaptured++
 	playerOneConsole.children[1].children[1].innerHTML = playerOneCaptured
 	turn = playerTwo
-	playerOneCaptured >= 7 ? (playerOneConsole.children[1].children[1].innerHTML = winIcon) : false
+	playerOneCaptured >= 7
+		? ((playerOneConsole.children[1].children[1].innerHTML = winIcon),
+		  playerOneConsole.parentElement.style.setProperty('background-color', '(202, 89, 95)'))
+		: false
 }
 
 //@ Game Board Events
