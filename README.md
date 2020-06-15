@@ -1,6 +1,6 @@
 # 9Mind's Morris
 
-**🎲♟[Play the Game] ♟ ♟ (https://b1m1nd.github.io/NineMens/)**
+**🎲♟ - [Play the Game](https://b1m1nd.github.io/NineMens/) ♟ **
 
 **(_9 Men's Morris_) This is a logic board game that I have recently fallen in love with. I hope you enjoy**
 
