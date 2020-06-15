@@ -1,10 +1,12 @@
-console.log('hi there')
+// 9Mind's Morris by Brent (b1Mind) Morton GitHub: (link)
 
 const gameBoard = document.getElementById('gameBoard')
 const dots = document.querySelectorAll('.dots')
 const playerOneConsole = document.querySelector('.playerOnePieces')
 const playerTwoConsole = document.querySelector('.playerTwoPieces')
 const controls = document.querySelector('.controls')
+const captureIcon = '\u{F057}'
+const winIcon = 'Win'
 
 let playerOnePieces = 9
 let playerTwoPieces = 9
@@ -18,14 +20,15 @@ let allOnBoard = false
 let playerOneCaptured = 0
 let playerTwoCaptured = 0
 let error = false
+let flyBaby = false
 
 const rollStart = e => {
 	let randomMath = Math.round(Math.random())
 	randomMath === 0 ? (turn = playerOne) : (turn = playerTwo)
 }
 
-//todo no fly zone unless last 3
-
+//@ checks and balances
+//todo maybe make safeMove() a switch statement
 const safeMove = (e, btn, player, ...args) => {
 	let safe
 	if (threeMan) {
@@ -34,11 +37,16 @@ const safeMove = (e, btn, player, ...args) => {
 	if (!allOnBoard) {
 		return (safe = true)
 	}
+	if (lastX === btn.attributes.cx.value && lastY === btn.attributes.cy.value) {
+		return (safe = false)
+	}
 	let playerDots = document.querySelectorAll(`.${player}`)
-	console.log(playerDots)
-	if (playerDots.length <= 2) {
+	console.log(playerDots.length)
+	if (playerDots.length <= 2 || flyBaby) {
+		flyBaby = true
 		return (safe = true)
 	}
+
 	safe = lastX === btn.attributes.cx.value || lastY === btn.attributes.cy.value ? true : false
 	return safe
 	/* 	let emptyDots = document.querySelectorAll(`.empty`)
@@ -51,6 +59,7 @@ const safeMove = (e, btn, player, ...args) => {
 	} */
 }
 
+//todo add check if more than one mill give same # capture
 const checkMill = (e, btn, player, action, ...args) => {
 	let x = btn.attributes.cx.value
 	let y = btn.attributes.cy.value
@@ -69,12 +78,12 @@ const checkMill = (e, btn, player, action, ...args) => {
 			mill.push(dot)
 		}
 	})
-	//todo add check if more than one mill give same # capture
+
 	if (action === 'del') {
 		if (xMatch >= 3 || yMatch >= 3) {
 			//fixme need logic to del if only avail pieces urgent!
 			if (playerDots.length === 3) {
-				//? working for last 3 players
+				// working for 3 players on board
 				return false
 			}
 			console.log(mill.length, playerDots.length)
@@ -85,10 +94,10 @@ const checkMill = (e, btn, player, action, ...args) => {
 	if (xMatch >= 3 || yMatch >= 3) {
 		threeMan = player
 		threeMan === playerOne
-			? (playerTwoConsole.style.setProperty('background-color', 'red'),
+			? ((playerTwoConsole.dataset.capture = captureIcon),
 			  (turn = playerOne),
 			  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)'))
-			: (playerOneConsole.style.setProperty('background-color', 'red'),
+			: ((playerOneConsole.dataset.capture = captureIcon),
 			  (turn = playerTwo),
 			  playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)'))
 		mill.forEach(dot => {
@@ -97,7 +106,7 @@ const checkMill = (e, btn, player, action, ...args) => {
 	}
 }
 
-//todo more checks
+//todo more checks?!?
 const updateConsole = (e, btn, player) => {}
 
 const safeDel = (e, btn, player, ...args) => {}
@@ -109,6 +118,7 @@ const playerOneAdd = (e, btn, player, ...args) => {
 	if (safeMove(e, btn, player) === false) {
 		return
 	}
+	controls.children[1].disabled = true
 	btn.classList.replace('empty', player)
 	playerOnePieces--
 	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
@@ -118,9 +128,11 @@ const playerOneAdd = (e, btn, player, ...args) => {
 }
 
 const playerOneMove = (e, btn, ...args) => {
+	controls.children[1].disabled = false
 	btn.classList.replace(playerOne, 'empty')
 	lastX = btn.attributes.cx.value
 	lastY = btn.attributes.cy.value
+	lastDot = btn
 	playerOnePieces++
 	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
 }
@@ -130,7 +142,7 @@ const playerOneDel = (e, btn, ...args) => {
 		return
 	}
 	btn.classList.replace(playerOne, 'empty')
-	playerOneConsole.style.removeProperty('background-color')
+	playerOneConsole.dataset.capture = ''
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
@@ -141,13 +153,15 @@ const playerOneDel = (e, btn, ...args) => {
 	playerTwoCaptured++
 	playerTwoConsole.children[1].children[1].innerHTML = playerTwoCaptured
 	turn = playerOne
-	playerTwoCaptured >= 7 ? (playerTwoConsole.children[1].children[1].innerHTML = 'Win') : false
+	playerTwoCaptured >= 7 ? (playerTwoConsole.children[1].children[1].innerHTML = winIcon) : false
 }
+
 //@ playerTwo actions
 const playerTwoAdd = (e, btn, player, ...args) => {
 	if (safeMove(e, btn, player) === false) {
 		return
 	}
+	controls.children[1].disabled = true
 	btn.classList.replace('empty', player)
 	playerTwoPieces--
 	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
@@ -157,9 +171,11 @@ const playerTwoAdd = (e, btn, player, ...args) => {
 }
 
 const playerTwoMove = (e, btn, ...args) => {
+	controls.children[1].disabled = false
 	btn.classList.replace(playerTwo, 'empty')
 	lastX = btn.attributes.cx.value
 	lastY = btn.attributes.cy.value
+	lastDot = btn
 	playerTwoPieces++
 	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
 }
@@ -169,7 +185,7 @@ const playerTwoDel = (e, btn, ...args) => {
 		return
 	}
 	btn.classList.replace(playerTwo, 'empty')
-	playerTwoConsole.style.removeProperty('background-color')
+	playerTwoConsole.dataset.capture = ''
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
@@ -180,17 +196,18 @@ const playerTwoDel = (e, btn, ...args) => {
 	playerOneCaptured++
 	playerOneConsole.children[1].children[1].innerHTML = playerOneCaptured
 	turn = playerTwo
-	playerOneCaptured >= 7 ? (playerOneConsole.children[1].children[1].innerHTML = 'Win') : false
+	playerOneCaptured >= 7 ? (playerOneConsole.children[1].children[1].innerHTML = winIcon) : false
 }
 
+//@ Game Board Events
 gameBoard.addEventListener('click', e => {
 	let btn = e.target.closest('circle')
 	if (!btn) return
 	//<Empty
 	if (btn.classList.contains('empty')) {
 		if (playerOnePieces > 0 || playerTwoPieces > 0) {
+			controls.children[0].disabled = true
 			turn === playerOne ? playerOneAdd(e, btn, playerOne) : playerTwoAdd(e, btn, playerTwo)
-			return
 		}
 		//<Player One
 	} else if (btn.classList.contains(playerOne)) {
@@ -212,8 +229,28 @@ gameBoard.addEventListener('click', e => {
 })
 
 controls.addEventListener('click', e => {
-	let btn = e.target.closest('.roll')
-	btn ? (rollStart(), (btn.disabled = true)) : false
+	let btn = e.target.closest('.btn')
+	if (!btn) return
+
+	btn.classList.contains('roll') ? (rollStart(), (btn.disabled = true)) : false
+
+	if (btn.classList.contains('undo')) {
+		if (turn === playerOne) {
+			lastDot.classList.replace('empty', playerOne)
+			playerOnePieces--
+			//turn = playerTwo
+			playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
+			controls.children[1].disabled = true
+		} else {
+			lastDot.classList.replace('empty', playerTwo)
+			playerTwoPieces--
+			//turn = playerTwo
+			playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
+			controls.children[1].disabled = true
+		}
+		console.log(turn, playerTwoPieces, playerOnePieces, lastDot)
+	}
+
 	turn !== playerOne
 		? playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 		: playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
