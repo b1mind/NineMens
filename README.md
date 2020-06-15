@@ -1,10 +1,8 @@
 # 9Mind's Morris
 
-(_9 Men's Morris_)
+**🎲♟[Play the Game] ♟ ♟ (https://b1m1nd.github.io/NineMens/)**
 
-[Play the Game](https://b1m1nd.github.io/NineMens/)
-
-**This is a logic board game that I have recently fallen in love with. I hope you enjoy**
+**(_9 Men's Morris_) This is a logic board game that I have recently fallen in love with. I hope you enjoy**
 
 💡-
 **This game is fully playable, if you follow the rules.** You can use "put back" button during Phase 2.
