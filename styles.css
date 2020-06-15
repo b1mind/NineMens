@@ -65,6 +65,12 @@ h3 {
   border-radius: 0 0 1.5rem 1.5rem;
 }
 
+@media (max-width: 420px) {
+  .console {
+    padding: 1.5rem 0 1.5rem 2rem;
+  }
+}
+
 .playerOnePieces,
 .playerTwoPieces {
   position: relative;
@@ -73,7 +79,7 @@ h3 {
 .playerOnePieces h3,
 .playerTwoPieces h3 {
   margin: 0;
-  border-bottom: 3px solid var(--colorBg2);
+  border-top: 3px solid var(--colorBg2);
 }
 
 .playerOnePieces h2,
