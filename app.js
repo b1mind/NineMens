@@ -46,7 +46,7 @@ const safeMove = (e, btn, player, ...args) => {
 	} */
 }
 
-const checkThree = (e, btn, player, ...args) => {
+const checkMill = (e, btn, player, action, ...args) => {
 	let x = btn.attributes.cx.value
 	let y = btn.attributes.cy.value
 	let playerDots = document.querySelectorAll(`.${player}`)
@@ -64,6 +64,15 @@ const checkThree = (e, btn, player, ...args) => {
 			mill.push(dot)
 		}
 	})
+	//todo add check if more than one mill give same # capture
+	if (action === 'del') {
+		if (xMatch >= 3 || yMatch >= 3) {
+			//fixme need logic to del if only avail pieces urgent!
+
+			console.log(mill.length, playerDots.length)
+			return true
+		}
+	}
 
 	if (xMatch >= 3 || yMatch >= 3) {
 		threeMan = player
@@ -97,7 +106,7 @@ const playerOneAdd = (e, btn, player, ...args) => {
 	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	turn = playerTwo
-	checkThree(e, btn, player)
+	checkMill(e, btn, player, 'add')
 }
 
 const playerOneMove = (e, btn, ...args) => {
@@ -109,6 +118,9 @@ const playerOneMove = (e, btn, ...args) => {
 }
 
 const playerOneDel = (e, btn, ...args) => {
+	if (checkMill(e, btn, playerOne, 'del')) {
+		return
+	}
 	btn.classList.replace(playerOne, 'empty')
 	playerOneConsole.style.removeProperty('background-color')
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
@@ -134,7 +146,7 @@ const playerTwoAdd = (e, btn, player, ...args) => {
 	console.dir(btn)
 	playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	turn = playerOne
-	checkThree(e, btn, player)
+	checkMill(e, btn, player, 'add')
 }
 
 const playerTwoMove = (e, btn, ...args) => {
@@ -146,6 +158,9 @@ const playerTwoMove = (e, btn, ...args) => {
 }
 
 const playerTwoDel = (e, btn, ...args) => {
+	if (checkMill(e, btn, playerTwo, 'del')) {
+		return
+	}
 	btn.classList.replace(playerTwo, 'empty')
 	playerTwoConsole.style.removeProperty('background-color')
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
