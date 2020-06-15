@@ -10,7 +10,9 @@
 **This game is fully playable, if you follow the rules.**
 I am looking at making a undue move button to help if you do make a wrong move.
 
-⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. As I start to refactor the project I might look at moving it over to <a href="https://svelte.dev/" target="_blank">Svelte "framework"</a> over vanilla js.
+⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Before requesting a feature or submitting feedback please check <a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>.
+
+As I start to refactor the project I might look at moving it over to <a href="https://svelte.dev/" target="_blank">Svelte "framework"</a> over vanilla js.
 
 ```
 // working
