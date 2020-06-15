@@ -1,8 +1,8 @@
 # 9Mind's Morris
 
-**🎲♟ - [Play the Game](https://b1m1nd.github.io/NineMens/) ♟**
+**🎲♟ - [Play the Game](https://b1m1nd.github.io/NineMens/) 🎲♟**
 
-**(_9 Men's Morris_) This is a logic board game that I have recently fallen in love with. I hope you enjoy**
+**(_9 Men's Morris_) Is a logic board game that I have recently fallen in love with. I hope you enjoy**
 
 💡-
 **This game is fully playable, if you follow the rules.** You can use "put back" button during Phase 2.
@@ -15,6 +15,7 @@
 - Phase 1: Take turns placing men till your have 0
 - Phase 2: Move men one space following path. Use "Put Back" button to return piece to board if needed.
 - Phase 3: When any player is down to last 3 men "Flying" is enabled and players can move freely on the board.
+- Win: When opponent has no legal moves or only 2 men.
 
 [4:20s video of rules](https://www.youtube.com/watch?v=zvbIKOHIkRE)
 
