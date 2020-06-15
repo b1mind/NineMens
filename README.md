@@ -21,8 +21,9 @@ As I start to refactor the project I might look at moving it over to <a href="ht
 ✅ Capturing Players
 ✅ Forced Capture (must capture to advance)
 ✅ Phase 2 only moves on path allowed
+✅ Mills are safe from capture
 // working on
-❌ Mills are not safe and can be deleted (illegal move)
+❌ If only Mill is available to capture no moves can be made 👎 (top fix list)
 ❌ Double Mills will highlight but only one capture allowed
 ❌ Can move more than one space (illegal move, unless Phase 3)
 ❌ Can move back to same spot (illegal move)

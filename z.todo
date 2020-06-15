@@ -10,10 +10,11 @@ Logic Todo:
   Player moves:
     ✔ only horizontal moves working @done(20-06-13 23:11)
     ✔ force capture when Mill is made (player turn issue) @done(20-06-14 16:16)
+    ✔ prevent mill from capture @done(20-06-14 19:45)
+    ☐ allow capture from mill if only pieces to capture
     ☐ Fly rule after <= 3 captured (free to move any where)
     ☐ Cant move to same spot
     ☐ Only move one space
-    ☐ prevent mill from del unless only 3 left
   Console Logic:
     ☐ one function to update - start todo list
     ☐ text log - errors/messages
