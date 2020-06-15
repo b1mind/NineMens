@@ -14,18 +14,18 @@
   <body>
     <div class="wrap">
       <div class="console flex">
-        <div class="playerOnePieces">
+        <div class="playerOnePieces" data-capture="">
           <h3>Player One</h3>
           <div class="flex">
-            <h2>9</h2>
-            <h2>0</h2>
+            <h2 class="menNum">9</h2>
+            <h2 class="capNum">0</h2>
           </div>
         </div>
-        <div class="playerTwoPieces">
+        <div class="playerTwoPieces" data-capture="">
           <h3>Player Two</h3>
           <div class="flex">
-            <h2>9</h2>
-            <h2>0</h2>
+            <h2 class="menNum">9</h2>
+            <h2 class="capNum">0</h2>
           </div>
         </div>
       </div>
@@ -68,8 +68,8 @@
       </svg>
       <div class="controls flex">
         <button class="btn roll">Roll</button>
-        <button class="btn" disabled="disabled">Undo</button><a href="">
-          <button class="btn">Restart</button></a>
+        <button class="btn undo" disabled="disabled">Put Back</button><a href="">
+          <button class="btn restart">Restart</button></a>
       </div>
     </div>
   </body>

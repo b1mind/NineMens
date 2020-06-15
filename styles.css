@@ -5,6 +5,8 @@
   --color2Dark: rgb(68, 112, 68);
   --colorBg: rgb(60, 83, 133);
   --colorBg2: rgb(48, 66, 105);
+  --colorLine: #212841;
+  --highlight: gold;
 }
 
 *,
@@ -58,7 +60,8 @@ h3 {
   padding: 1.5rem;
   color: white;
   text-align: center;
-  background-color: grey;
+  background-color: var(--colorLine);
+  border: 1px solid var(--colorBg2);
   border-radius: 0 0 1.5rem 1.5rem;
 }
 
@@ -67,18 +70,59 @@ h3 {
   position: relative;
 }
 
-.playerOnePieces::after, .playerTwoPieces::after {
+.playerOnePieces h3,
+.playerTwoPieces h3 {
+  margin: 0;
+  border-bottom: 3px solid var(--colorBg2);
+}
+
+.playerOnePieces h2,
+.playerTwoPieces h2 {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--colorBg2);
+  border-radius: 0.5rem;
+}
+
+.menNum::after, .capNum::after {
+  content: 'M E N';
+  position: absolute;
+  bottom: -10px;
+  left: 11px;
+  font-size: xx-small;
+}
+
+.capNum::after {
+  content: 'C A P';
+  right: -30px;
+}
+
+.playerOnePieces::before, .playerTwoPieces::before {
   content: '\f007';
   position: absolute;
   top: 2rem;
-  left: -2.5rem;
+  left: -2.75rem;
   color: var(--colorDark);
   font-family: 'Font Awesome 5 Free';
   font-size: 2.5rem;
 }
 
-.playerTwoPieces::after {
+.playerTwoPieces::before {
   color: var(--color2Dark);
+}
+
+.playerOnePieces::after, .playerTwoPieces::after {
+  content: attr(data-capture) "";
+  position: absolute;
+  top: 1.6rem;
+  left: -3.4rem;
+  color: var(--highlight);
+  opacity: 0.5;
+  font-family: 'Font Awesome 5 Free';
+  font-size: 3.5rem;
+}
+
+.playerTwoPieces::after {
+  content: attr(data-capture);
 }
 
 #gameBoard {
@@ -94,13 +138,13 @@ h3 {
 }
 
 .lines {
-  stroke: #212841;
+  stroke: var(--colorLine);
   stroke-width: 4;
 }
 
 .dots {
   fill: var(--colorBg2);
-  stroke: black;
+  stroke: var(--colorLine);
   stroke-width: 1px;
 }
 
@@ -108,6 +152,12 @@ circle:hover {
   fill-opacity: 80%;
   stroke: white;
   stroke-width: 2px;
+}
+
+@media (max-width: 420px) {
+  circle:hover {
+    stroke: none;
+  }
 }
 
 .playerOne {
@@ -121,6 +171,6 @@ circle:hover {
 }
 
 .mill {
-  stroke: gold;
+  stroke: var(--highlight);
   stroke-width: 2px;
 }

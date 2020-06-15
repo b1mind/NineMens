@@ -13,17 +13,17 @@ html(lang="en")
 
   body
     .wrap
-      .console.flex
-        .playerOnePieces
+      .console.flex()
+        .playerOnePieces(data-capture="")
           h3 Player One
           .flex
-            h2 9
-            h2 0
-        .playerTwoPieces
+            h2.menNum 9
+            h2.capNum 0
+        .playerTwoPieces(data-capture="")
           h3 Player Two
           .flex
-            h2 9
-            h2 0
+            h2.menNum 9
+            h2.capNum 0
         
       svg#gameBoard(viewBox='-15 -15 450 450', fill='none', xmlns='http://www.w3.org/2000/svg')
         g.lines()
@@ -61,7 +61,7 @@ html(lang="en")
           circle.empty(cx='410', cy='404', r='13')
       .controls.flex
         button.btn.roll Roll
-        button(disabled).btn Undo
+        button(disabled).btn.undo Put Back
         a(href="")
-          button().btn Restart
+          button().btn.restart Restart
         
