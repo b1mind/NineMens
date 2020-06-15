@@ -4,6 +4,8 @@ const gameBoard = document.getElementById('gameBoard')
 const dots = document.querySelectorAll('.dots')
 const playerOneConsole = document.querySelector('.playerOnePieces')
 const playerTwoConsole = document.querySelector('.playerTwoPieces')
+const controls = document.querySelector('.controls')
+
 let playerOnePieces = 9
 let playerTwoPieces = 9
 let playerOne = 'playerOne'
@@ -13,11 +15,22 @@ let lastX
 let lastY
 let threeMan = null
 let allOnBoard = false
+let playerOneCaptured = 0
+let playerTwoCaptured = 0
 let error = false
 
+const rollStart = e => {
+	let randomMath = Math.round(Math.random())
+	randomMath === 0 ? (turn = playerOne) : (turn = playerTwo)
+}
+
 //todo no fly zone unless last 3
+
 const safeMove = (e, btn, player, ...args) => {
 	let safe
+	if (threeMan) {
+		return (safe = false)
+	}
 	if (!allOnBoard) {
 		return (safe = true)
 	}
@@ -40,6 +53,7 @@ const checkThree = (e, btn, player, ...args) => {
 	let xMatch = 0
 	let yMatch = 0
 	let mill = []
+
 	playerDots.forEach(dot => {
 		if (dot.cx.baseVal.value == x) {
 			xMatch++
@@ -53,26 +67,37 @@ const checkThree = (e, btn, player, ...args) => {
 
 	if (xMatch >= 3 || yMatch >= 3) {
 		threeMan = player
-		player === playerOne
-			? playerTwoConsole.style.setProperty('background-color', 'red')
-			: playerOneConsole.style.setProperty('background-color', 'red')
-		//todo safe from capture in 3
+		threeMan === playerOne
+			? (playerTwoConsole.style.setProperty('background-color', 'red'),
+			  (turn = playerOne),
+			  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)'))
+			: (playerOneConsole.style.setProperty('background-color', 'red'),
+			  (turn = playerTwo),
+			  playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)'))
 		mill.forEach(dot => {
 			dot.classList.add('mill')
 		})
 	}
 }
 
+//todo more checks
+const updateConsole = (e, btn, player) => {}
+
+const safeDel = (e, btn, player, ...args) => {}
+
+const checkTurn = (e, btn, player) => {}
+
+//@ player one actions
 const playerOneAdd = (e, btn, player, ...args) => {
 	if (safeMove(e, btn, player) === false) {
 		return
 	}
 	btn.classList.replace('empty', player)
-	checkThree(e, btn, player)
 	playerOnePieces--
 	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
 	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	turn = playerTwo
+	checkThree(e, btn, player)
 }
 
 const playerOneMove = (e, btn, ...args) => {
@@ -80,30 +105,36 @@ const playerOneMove = (e, btn, ...args) => {
 	lastX = btn.attributes.cx.value
 	lastY = btn.attributes.cy.value
 	playerOnePieces++
+	playerOneConsole.children[1].children[0].innerHTML = playerOnePieces
 }
 
 const playerOneDel = (e, btn, ...args) => {
 	btn.classList.replace(playerOne, 'empty')
 	playerOneConsole.style.removeProperty('background-color')
+	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
 		console.log(dot)
 		dot.classList.remove('mill')
 	})
 	threeMan = false
+	playerTwoCaptured++
+	playerTwoConsole.children[1].children[1].innerHTML = playerTwoCaptured
+	turn = playerOne
+	playerTwoCaptured >= 7 ? (playerTwoConsole.children[1].children[1].innerHTML = 'Win') : false
 }
-
+//@ playerTwo actions
 const playerTwoAdd = (e, btn, player, ...args) => {
 	if (safeMove(e, btn, player) === false) {
 		return
 	}
 	btn.classList.replace('empty', player)
-	checkThree(e, btn, player)
 	playerTwoPieces--
 	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
 	console.dir(btn)
 	playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	turn = playerOne
+	checkThree(e, btn, player)
 }
 
 const playerTwoMove = (e, btn, ...args) => {
@@ -111,17 +142,23 @@ const playerTwoMove = (e, btn, ...args) => {
 	lastX = btn.attributes.cx.value
 	lastY = btn.attributes.cy.value
 	playerTwoPieces++
+	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
 }
 
 const playerTwoDel = (e, btn, ...args) => {
 	btn.classList.replace(playerTwo, 'empty')
 	playerTwoConsole.style.removeProperty('background-color')
+	playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 	let mills = document.querySelectorAll('.mill')
 	mills.forEach(dot => {
 		console.log(dot)
 		dot.classList.remove('mill')
 	})
 	threeMan = false
+	playerOneCaptured++
+	playerOneConsole.children[1].children[1].innerHTML = playerOneCaptured
+	turn = playerTwo
+	playerOneCaptured >= 7 ? (playerOneConsole.children[1].children[1].innerHTML = 'Win') : false
 }
 
 gameBoard.addEventListener('click', e => {
@@ -152,6 +189,14 @@ gameBoard.addEventListener('click', e => {
 	}
 })
 
-//todo check three logic
+controls.addEventListener('click', e => {
+	let btn = e.target.closest('.roll')
+	btn ? (rollStart(), (btn.disabled = true)) : false
+	turn !== playerOne
+		? playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
+		: playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
+})
+
+//todo move logic ideas
 // for if x or y < 40 points can move if no false move... unless only 3 left on board
 // queryAll empty then forEach.empty that matches lastX or lastY if length.2 < use less.
