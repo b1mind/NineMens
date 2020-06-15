@@ -34,6 +34,11 @@ const safeMove = (e, btn, player, ...args) => {
 	if (!allOnBoard) {
 		return (safe = true)
 	}
+	let playerDots = document.querySelectorAll(`.${player}`)
+	console.log(playerDots)
+	if (playerDots.length <= 2) {
+		return (safe = true)
+	}
 	safe = lastX === btn.attributes.cx.value || lastY === btn.attributes.cy.value ? true : false
 	return safe
 	/* 	let emptyDots = document.querySelectorAll(`.empty`)
@@ -68,7 +73,10 @@ const checkMill = (e, btn, player, action, ...args) => {
 	if (action === 'del') {
 		if (xMatch >= 3 || yMatch >= 3) {
 			//fixme need logic to del if only avail pieces urgent!
-
+			if (playerDots.length === 3) {
+				//? working for last 3 players
+				return false
+			}
 			console.log(mill.length, playerDots.length)
 			return true
 		}
@@ -143,7 +151,6 @@ const playerTwoAdd = (e, btn, player, ...args) => {
 	btn.classList.replace('empty', player)
 	playerTwoPieces--
 	playerTwoConsole.children[1].children[0].innerHTML = playerTwoPieces
-	console.dir(btn)
 	playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 	turn = playerOne
 	checkMill(e, btn, player, 'add')

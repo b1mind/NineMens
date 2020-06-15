@@ -10,7 +10,7 @@
 **This game is fully playable, if you follow the rules.**
 I am looking at making a undue move button to help if you do make a wrong move.
 
-⚠ **If only Mill is left to capture moves will be locked \*Working on urgent fix** ⚠
+⚠ **If only Mills left and player count is > 3 cant capture pieces. Locks up moves, forced to restart ⚠ Working on fix** 😵
 
 ⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Before requesting a feature or submitting feedback please check <a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>.
 
@@ -24,12 +24,12 @@ As I start to refactor the project I might look at moving it over to <a href="ht
 ✅ Forced Capture (must capture to advance)
 ✅ Phase 2 only moves on path allowed
 ✅ Mills are safe from capture
+✅ Phase 3 (optional) "Fly moves allowed"
 // working on
-❌ If only Mill is available to capture no moves can be made 👎 (top fix list)
+❌ Can't capture Mills if player count is > 3 *Locks moves forced restart
 ❌ Can move more than one space (illegal move, unless Phase 3)
 ❌ Can move back to same spot (illegal move)
 // optionals
-❌ Phase 3 (optional) Can't Fly yet (limited to only path moves)
 ❌ Double Mills will highlight but only one capture allowed
 ```
 
