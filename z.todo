@@ -1,14 +1,15 @@
 Logic Todo:
   ✔ Roll to start @done(20-06-14 02:32)
   ✔ Player captured count @done(20-06-14 02:53)
-  ☐ Winning logic / error logic
+  ✔ Winning logic @done(20-06-14 18:05) `make UI changes`
+  ☐ Error logic
   ☐ Undue last move
   ☐ Restart button
   ☐ Modal popup with directions/rules
 
   Player moves:
     ✔ only horizontal moves working @done(20-06-13 23:11)
-    ☐ force capture when Mill is made
+    ✔ force capture when Mill is made (player turn issue) @done(20-06-14 16:16)
     ☐ Fly rule after <= 3 captured (free to move any where)
     ☐ Cant move to same spot
     ☐ Only move one space
@@ -36,4 +37,4 @@ Notes:
   // logic for after all peices are used playerMove()
   // refacotor console logic ASAP starting to repeate to much
   // full refactor really look at composition over inhearitance.
-  ✔ updated @done(20-06-14 04:19)
+  ✔ updated @done(20-06-14 18:55)

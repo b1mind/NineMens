@@ -10,17 +10,18 @@
 **This game is fully playable, if you follow the rules.**
 I am looking at making a undue move button to help if you do make a wrong move.
 
-⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. Might look at moving project over to [Svelte "framework"](https://svelte.dev/)
+⛑ Still working on some of the logic preventing breaking rules. Also working on other UX/UI improvements. As I start to refactor the project I might look at moving it over to <a href="https://svelte.dev/" target="_blank">Svelte "framework"</a> over vanilla js.
 
 ```
 // working
 ✅ Player turns Phase 1 and 2
 ✅ Single Mills (highlighting working for double)
 ✅ Capturing Players
-✅ Only moves on path allowed in Phase 2
+✅ Forced Capture (must capture to advance)
+✅ Phase 2 only moves on path allowed
 // working on
 ❌ Mills are not safe and can be deleted (illegal move)
-❌ Double Mills will highlight but only one capture allowed atm.
+❌ Double Mills will highlight but only one capture allowed
 ❌ Can move more than one space (illegal move, unless Phase 3)
 ❌ Can move back to same spot (illegal move)
 ❌ Phase 3 (optional) Can't Fly yet (limited to only path moves)
@@ -52,53 +53,9 @@ I am looking at making a undue move button to help if you do make a wrong move.
   - Phase 3 is optional and is considered a variation of the game to give an advantage to the losing opponent once they only have one piece left. If the players agree not to play phase 3 then they continue playing phase 2 until the end of the game.
   - The game ends when one of the players is reduced to two pieces, and cannot any longer form mills, or if a player has no legal moves to make, making their opponent the winner in either situation.
 
-### On the Todo List
-
-```
-
-Logic Todo:
-  ✔ Roll to start @done(20-06-14 02:32)
-  ✔ Player captured count @done(20-06-14 02:53)
-  ☐ Winning logic / error logic
-  ☐ Undue last move
-  ☐ Restart button
-  ☐ Modal popup with directions/rules
-
-  Player moves:
-    ✔ only horizontal moves working @done(20-06-13 23:11)
-    ☐ force capture when Mill is made
-    ☐ Fly rule after <= 3 captured (free to move any where)
-    ☐ Cant move to same spot
-    ☐ Only move one space
-    ☐ prevent mill from del unless only 3 left
-  Console Logic:
-    ☐ one function to update - start todo list
-    ☐ text log - errors/messages
-
-UI/UX:
-  ✔ class highlight for mill @done(20-06-12 03:00)
-  ✔ players board with count and turn color @done(20-06-12 03:01)
-  ✔ captured players value @done(20-06-14 02:53)
-  ☐ color players and wrappers
-  ☐ winnning text/effects
-  ☐ Undue last move button
-  ☐ tye in css vars
-  ☐ start modal - roll/readup/color selector
-  ☐ fix alignment of svg elements
-  ☐ make animation todo list*wishlist
-  ☐ add icons ?
-
-Notes:
-  // See in-file comments for todo locations and ideas 💡
-  // Creating better "mill" logic with help with refactoring.
-  // logic for after all peices are used playerMove()
-  // refacotor console logic ASAP starting to repeate to much
-  // full refactor really look at composition over inhearitance.
-  ✔ updated @done(20-06-14 04:19)
-
-```
-
 ### Future Features
+
+<a href="https://github.com/b1m1nd/NineMens/blob/master/z.todo" target="_blank">Todo List</a>
 
 ~~features you will probably never get lol~~
 
