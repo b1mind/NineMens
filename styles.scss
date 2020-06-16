@@ -65,7 +65,7 @@ h3 {
 	border: 1px solid var(--colorBg2);
 	border-radius: 0 0 1.5rem 1.5rem;
 	@media (max-width: $minWidthSml) {
-		padding: 1.5rem 0 1.5rem 2rem;
+		padding: 1.5rem 0 1.5rem 2.5rem;
 	}
 }
 
@@ -106,10 +106,10 @@ h3 {
 	content: '\f007';
 	position: absolute;
 	top: 2rem;
-	left: -2.75rem;
+	left: -3.5rem;
 	color: var(--colorDark);
 	font-family: 'Font Awesome 5 Free';
-	font-size: 2.5rem;
+	font-size: 3.5rem;
 }
 
 .playerTwoPieces::before {
@@ -120,12 +120,12 @@ h3 {
 .playerOnePieces::after {
 	content: attr(data-capture) '';
 	position: absolute;
-	top: 1.6rem;
-	left: -3.4rem;
+	top: 1.7rem;
+	left: -3.2rem;
 	color: var(--highlight);
 	opacity: 0.75;
 	font-family: 'Font Awesome 5 Free';
-	font-size: 3.5rem;
+	font-size: 2.5rem;
 }
 
 .playerTwoPieces::after {

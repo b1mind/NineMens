@@ -155,7 +155,7 @@ const playerOneDel = (e, btn, ...args) => {
 	turn = playerOne
 	playerTwoCaptured >= 7
 		? ((playerTwoConsole.children[1].children[1].innerHTML = winIcon),
-		  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)'))
+		  playerOneConsole.parentElement.style.setProperty('background-color', '#212841'))
 		: false
 }
 
@@ -201,7 +201,7 @@ const playerTwoDel = (e, btn, ...args) => {
 	turn = playerTwo
 	playerOneCaptured >= 7
 		? ((playerOneConsole.children[1].children[1].innerHTML = winIcon),
-		  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)'))
+		  playerOneConsole.parentElement.style.setProperty('background-color', '#212841'))
 		: false
 }
 
