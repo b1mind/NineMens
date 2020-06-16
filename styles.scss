@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass&family=Roboto&display=swap');
 //- //< Sassy settings
 $minWidthLg: 1000px;
 $minWidthMed: 800px;
@@ -25,6 +26,8 @@ body {
 	height: 100%;
 	min-height: 100%;
 	margin: 0;
+	font-family: 'Overpass', sans-serif;
+	font-size: 16px;
 	background-color: var(--colorBg);
 }
 
@@ -71,10 +74,14 @@ h3 {
 	position: relative;
 	h3 {
 		margin: 0;
+		padding-top: 0.5rem;
+		font-family: 'Robot', sans-serif;
+		font-weight: 300;
 		border-top: 3px solid var(--colorBg2);
 	}
 	h2 {
-		padding: 0.5rem 0.75rem;
+		padding: 1rem 0.75rem 0.75rem 0.75rem;
+		line-height: 1rem;
 		background-color: var(--colorBg2);
 		border-radius: 0.5rem;
 	}
@@ -83,15 +90,16 @@ h3 {
 .menNum::after {
 	content: 'M E N';
 	position: absolute;
-	bottom: -10px;
+	bottom: -15px;
 	left: 11px;
-	font-size: xx-small;
+	font-size: x-small;
+	font-weight: 500;
 }
 
 .capNum::after {
 	@extend .menNum::after;
 	content: 'C A P';
-	right: -30px;
+	right: -33px;
 }
 
 .playerOnePieces::before {
@@ -115,7 +123,7 @@ h3 {
 	top: 1.6rem;
 	left: -3.4rem;
 	color: var(--highlight);
-	opacity: 0.5;
+	opacity: 0.75;
 	font-family: 'Font Awesome 5 Free';
 	font-size: 3.5rem;
 }
