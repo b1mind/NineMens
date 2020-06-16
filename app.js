@@ -6,7 +6,7 @@ const playerOneConsole = document.querySelector('.playerOnePieces')
 const playerTwoConsole = document.querySelector('.playerTwoPieces')
 const controls = document.querySelector('.controls')
 const captureIcon = '\u{F057}'
-const winIcon = 'Win'
+const winIcon = 'W'
 
 let playerOnePieces = 9
 let playerTwoPieces = 9
@@ -201,7 +201,7 @@ const playerTwoDel = (e, btn, ...args) => {
 	turn = playerTwo
 	playerOneCaptured >= 7
 		? ((playerOneConsole.children[1].children[1].innerHTML = winIcon),
-		  playerOneConsole.parentElement.style.setProperty('background-color', '(202, 89, 95)'))
+		  playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)'))
 		: false
 }
 
@@ -261,7 +261,3 @@ controls.addEventListener('click', e => {
 		? playerOneConsole.parentElement.style.setProperty('background-color', 'rgb(95, 161, 95)')
 		: playerTwoConsole.parentElement.style.setProperty('background-color', 'rgb(202, 89, 95)')
 })
-
-//todo move logic ideas
-// for if x or y < 40 points can move if no false move... unless only 3 left on board
-// queryAll empty then forEach.empty that matches lastX or lastY if length.2 < use less.
